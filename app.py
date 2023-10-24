@@ -3,7 +3,7 @@ import streamlit as st
 import re
 import requests
 from PIL import Image
-from dotenv import load_dotenv
+#from dotenv import load_dotenv
 from metaphor_python import Metaphor
 from twilio.rest import Client
 import replicate
