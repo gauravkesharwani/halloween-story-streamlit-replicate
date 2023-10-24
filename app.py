@@ -1,28 +1,24 @@
 import streamlit as st
-#import os
+import os
 import re
 import requests
 from PIL import Image
-#from dotenv import load_dotenv
-from metaphor_python import Metaphor
+from dotenv import load_dotenv
+#from metaphor_python import Metaphor
 from twilio.rest import Client
 import replicate
 
 
 #metaphor = Metaphor(os.environ.get("METAPHOR_API_KEY"))
 
-account_sid = st.secrets['TWILIO_ACCOUNT_SID']
-auth_token = st.secrets['TWILIO_AUTH_TOKEN']
+account_sid = st.secrets['TWILIO_ACCOUNT_SID'] #os.environ.get("TWILIO_ACCOUNT_SID") 
+auth_token = st.secrets['TWILIO_AUTH_TOKEN'] #os.environ.get("TWILIO_AUTH_TOKEN") 
 load_dotenv()
+
+
 client = Client(account_sid, auth_token)
 
-# # Set the API endpoint and your API key
-# url = "https://api.openai.com/v1/completions"
-
-# api_key = os.environ.get('OPENAI_API_KEY')
-
 st.title('Scare your friend with a phone call!')
-#prompt: Audibly scare this person who is scared of
 
 image = Image.open('halloween.jpeg')
 st.image(image)
