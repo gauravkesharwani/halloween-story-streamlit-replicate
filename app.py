@@ -46,6 +46,6 @@ if st.button('Enter'):
     )
     
     print(call.sid)
-st.write('Made w/ ❤️ in SF 🌁')
-st.write("check out the [GitHub repo](https://github.com/elizabethsiegle) for more cool hacks")
+st.write('Made w/ ❤️ in SF 🌁. S/o to [Dom](https://twitter.com/dkundel) and [Craig](https://twitter.com/craigsdennis) for prompt assistance')
+st.write("check out the [code on GitHub](https://github.com/elizabethsiegle/halloween-story-streamlit-replicate)")
     
