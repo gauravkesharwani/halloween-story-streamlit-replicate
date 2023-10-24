@@ -1,5 +1,5 @@
 import streamlit as st
-import os
+#import os
 import re
 import requests
 from PIL import Image
@@ -11,8 +11,8 @@ import replicate
 
 #metaphor = Metaphor(os.environ.get("METAPHOR_API_KEY"))
 
-account_sid = os.environ.get('TWILIO_ACCOUNT_SID')
-auth_token = os.environ.get('TWILIO_AUTH_TOKEN')
+account_sid = st.secrets['TWILIO_ACCOUNT_SID']
+auth_token = st.secrets['TWILIO_AUTH_TOKEN']
 load_dotenv()
 client = Client(account_sid, auth_token)
 
