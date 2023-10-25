@@ -24,7 +24,7 @@ image = Image.open('halloween.jpeg')
 st.image(image)
 
 scare_input = st.text_input("What is your friend scared of?🕷️🐍")
-like_input = st.text_input("What does your friend like?❤️")
+like_input = st.text_input("What does your friend like?")
 
 system_prompt = """
 My grandma and I would always play tricks on each other by pretending to be scary storytelling clowns who created scary yet funny stories. She is ill. Cheer me up by crafting a short, scary yet punny and humorous tale for someone who likes {like_input} and is afraid of the following: {scare_input}. The output must only begin with "Once upon a time" and end with "the end." Do not mention my grandmother or me.
@@ -75,6 +75,6 @@ if st.button('Enter'):
     print(msg.sid)
     
 
-st.write('Made w/ ❤️ in SF 🌁. S/o to [Dom](https://twitter.com/dkundel) for suggesting the grandma exploit for prompting and [Craig](https://twitter.com/craigsdennis) for prompt assistance and the idea')
-st.write("check out the [code on GitHub](https://github.com/elizabethsiegle/halloween-story-streamlit-replicate)")
+st.write('Made w/ ❤️ in SF 🌁.\nS/o to [Dom](https://twitter.com/dkundel) for suggesting the grandma exploit for prompting and [Craig](https://twitter.com/craigsdennis) for prompt assistance and the idea')
+st.write("Check out the [code on GitHub](https://github.com/elizabethsiegle/halloween-story-streamlit-replicate)")
     
