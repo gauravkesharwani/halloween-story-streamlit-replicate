@@ -15,9 +15,10 @@ auth_token = st.secrets['TWILIO_AUTH_TOKEN']
 
 client = Client(account_sid, auth_token)
 
-st.title('Scare👻 a friend with a phone call☎️!')
+st.title('Scare👻 a friend w/ a phone call☎️!')
 
-image = Image.open('halloween.jpeg')
+image = Image.open('unsplashskeleton.jpeg')
+st.write("Image is from [Sabina Music Rich on Unsplash](https://unsplash.com/photos/grayscale-photo-of-person-wearing-mask-OJy0JHnoUZQ?utm_content=creditShareLink&utm_medium=referral&utm_source=unsplash)")
 st.image(image)
 
 scare_input = st.text_input("What is your friend scared of?🕷️🐍")
