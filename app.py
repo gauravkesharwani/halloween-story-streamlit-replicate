@@ -1,18 +1,19 @@
 import streamlit as st
 import os
 import re
+import re
 import requests
 from PIL import Image
 from dotenv import load_dotenv
-#from metaphor_python import Metaphor
+from metaphor_python import Metaphor
 from twilio.rest import Client
 import replicate
 
 
-#metaphor = Metaphor(os.environ.get("METAPHOR_API_KEY"))
+metaphor = Metaphor(st.secrets['METAPHOR_API_KEY']) #(os.environ.get("METAPHOR_API_KEY")) 
 
 account_sid = st.secrets['TWILIO_ACCOUNT_SID'] #os.environ.get("TWILIO_ACCOUNT_SID") 
-auth_token = st.secrets['TWILIO_AUTH_TOKEN'] #os.environ.get("TWILIO_AUTH_TOKEN") 
+auth_token = st.secrets['TWILIO_AUTH_TOKEN'] #os.environ.get("TWILIO_AUTH_TOKEN")  
 load_dotenv()
 
 
@@ -37,15 +38,44 @@ if st.button('Enter'):
     )
     str1 = ''.join(output)
     print(str1)
+
+    #metaphor
+    met_res = metaphor.search(f"Here is the scariest fiction story for someone who is scared of {scare_input}", use_autoprompt=True, num_results=1)
+    # Define a regular expression pattern to match URLs
+    url_pattern = r"https?://\S+"
+    print(f"met_res {met_res}")
+    # Use the findall function to extract all URLs from the input string
+    urls = re.findall(url_pattern, str(met_res))
+
+    # Check if any URLs were found
+    met_url = ''
+    if urls:
+        # Print the first URL found in the string
+        print("Metaphor URL:", urls[0])
+        met_url=urls[0]
+    else:
+        met_url = 0
+        print("No URL found in the input string.")
+
+    st.write(f"relevant search result: {met_url}")
     st.write("Your friend will get a phone call that spookily says: ", str1)
+
     twiml = f"<Response><Say voice='Polly.Brian' language='en-UK'><prosody pitch='-10%' rate='85%' volume='-6dB'>{str1}</prosody></Say></Response>"
     call = client.calls.create( 
         twiml = twiml,
-        to=user_num, #user input
-        from_='+18668453916' #twilio num
+        to=user_num, #user input 
+        from_= '+1 855 302 1845' #'+18668453916' #twilio num
     )
-    
     print(call.sid)
-st.write('Made w/ ❤️ in SF 🌁. S/o to [Dom](https://twitter.com/dkundel) and [Craig](https://twitter.com/craigsdennis) for prompt assistance, esp with the grandma exploit')
+    out_msg = f"Here is a scary story search result from Metaphor: {met_url}"
+    msg = client.messages.create( 
+        body = out_msg,
+        to=user_num, #user input 
+        from_= '+1 855 302 1845' #'+18668453916' #twilio num
+    )
+    print(msg.sid)
+    
+
+st.write('Made w/ ❤️ in SF 🌁. S/o to [Dom](https://twitter.com/dkundel) for suggesting the grandma exploit for prompting and [Craig](https://twitter.com/craigsdennis) for prompt assistance and the idea')
 st.write("check out the [code on GitHub](https://github.com/elizabethsiegle/halloween-story-streamlit-replicate)")
     
