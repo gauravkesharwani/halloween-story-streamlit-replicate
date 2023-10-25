@@ -12,7 +12,6 @@ metaphor = Metaphor(st.secrets['METAPHOR_API_KEY'])
 
 account_sid = st.secrets['TWILIO_ACCOUNT_SID']
 auth_token = st.secrets['TWILIO_AUTH_TOKEN'] 
-load_dotenv()
 
 client = Client(account_sid, auth_token)
 
