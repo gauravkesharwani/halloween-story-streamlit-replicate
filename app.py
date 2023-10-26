@@ -73,6 +73,6 @@ if st.button('Enter'):
     print(msg.sid)
     
 
-st.write("Made w/ ❤️ in SF 🌁.\n\nS/o [Dom](https://twitter.com/dkundel) for suggesting the [grandma exploit for prompting](https://news.ycombinator.com/item?id=35630801) and [Craig](https://twitter.com/craigsdennis) for prompt assistance/this idea")
+st.write("Made w/ ❤️ in SF 🌁 [@TwilioDevs](https://instagram.com/twiliodevs)\n\nS/o [Dom](https://twitter.com/dkundel) for the [grandma exploit](https://news.ycombinator.com/item?id=35630801) && [Craig](https://twitter.com/craigsdennis) for prompt assistance/this idea")
 st.write("✅ out the [code on GitHub](https://github.com/elizabethsiegle/halloween-story-streamlit-replicate)")
     
